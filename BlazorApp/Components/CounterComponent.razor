@@ -1,0 +1,20 @@
+﻿@using BlazorApp.Data
+@inject CounterService CounterService
+@inherits ComponentBase 
+
+<h3>Current count: @CounterService.CurrentCount</h3>
+<button class="btn btn-primary" @onclick="Save">Save</button>
+
+@code {
+    override protected void OnInitialized()
+    {
+        this.Service = CounterService;
+        base.OnInitialized();
+    }
+
+    void Save()
+    {
+        CounterService.Save();
+    }
+}
+ 

@@ -1,0 +1,27 @@
+﻿@page "/"
+@using BlazorApp.Data
+
+
+@inject CounterService Service
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<BlazorApp.Components.CounterComponent></BlazorApp.Components.CounterComponent>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+	//void Refresh() => InvokeAsync(StateHasChanged);
+
+	//override protected void OnInitialized() => Service.OnChange += Refresh;
+	//void IDisposable.Dispose() => Service.OnChange -= Refresh;
+
+	private void IncrementCount()
+	{
+		Service.CurrentCount++;
+	}
+}

@@ -1,0 +1,15 @@
+﻿@using BlazorApp.Data
+@implements IDisposable
+@*@inject ApplicationServices Services*@
+
+@code {
+    void Refresh() => InvokeAsync(StateHasChanged);
+    public IService Service;
+
+    override protected void OnInitialized()
+    {
+        Service.OnChange += Refresh;
+    }
+
+    void IDisposable.Dispose() => Service.OnChange -= Refresh;
+}
